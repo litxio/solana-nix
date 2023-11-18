@@ -17,6 +17,10 @@
     flake = false;
   };
 
+  inputs.jito-solana-src-1_16_19 = {
+    url = "git+https://github.com/jito-foundation/jito-solana.git?ref=refs/tags/v1.16.19-jito&submodules=1";
+    flake = false;
+  };
 
   outputs = inputs@{ self, nixpkgs, fenix, ... }:
     let pkgs = import nixpkgs { system = "x86_64-linux"; };
@@ -99,7 +103,11 @@
 
         packages.x86_64-linux.jito-solana-1_16_18 =
           build "1.16.18-jito" inputs.jito-solana-src-1_16_18 toolchain_1_69_0;
-        packages.x86_64-linux.jito-solana = self.packages.x86_64-linux.jito-solana-1_16_18;
+
+        packages.x86_64-linux.jito-solana-1_16_19 =
+          build "1.16.19-jito" inputs.jito-solana-src-1_16_19 toolchain_1_69_0;
+
+        packages.x86_64-linux.jito-solana = self.packages.x86_64-linux.jito-solana-1_16_19;
 
         #packages.x86_64-linux.default = self.packages.x86_64-linux.jito-solana;
 
