@@ -35,6 +35,8 @@ rustPlatform.buildRustPackage rec {
   # Needed so bindgen can find libclang.so
   LIBCLANG_PATH="${llvmPackages.libclang.lib}/lib";
 
+  RUSTFLAGS="-C force-frame-pointers=yes -C link-arg=-z -C link-arg=common-page-size=2097152 -C link-arg=-z -C link-arg=max-page-size=2097152";
+
   buildInputs = [
     udev
     llvmPackages.clang-unwrapped.lib
