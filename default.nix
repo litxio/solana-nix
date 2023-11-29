@@ -24,6 +24,8 @@ rustPlatform.buildRustPackage rec {
   #buildType = "debug";
   #dontStrip = true;
 
+  RUSTFLAGS="-C target-cpu=znver3";
+
   nativeBuildInputs = [
     pkg-config
     protobuf
