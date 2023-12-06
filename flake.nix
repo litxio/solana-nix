@@ -7,8 +7,15 @@
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
+  inputs.arch-support.url = "github:litxio/nix-cpu-arch-support";
+
   inputs.solana-src-1_16_19 = {
     url = "git+https://github.com/solana-labs/solana.git?ref=refs/tags/v1.16.19";
+    flake = false;
+  };
+
+  inputs.solana-src-1_16_21 = {
+    url = "git+https://github.com/solana-labs/solana.git?ref=refs/tags/v1.16.21";
     flake = false;
   };
 
@@ -22,7 +29,12 @@
     flake = false;
   };
 
-  outputs = inputs@{ self, nixpkgs, fenix, ... }:
+  inputs.jito-solana-src-1_16_21 = {
+    url = "git+https://github.com/jito-foundation/jito-solana.git?ref=refs/tags/v1.16.21-jito&submodules=1";
+    flake = false;
+  };
+
+  outputs = inputs@{ self, nixpkgs, fenix, arch-support, ... }:
     let pkgs = import nixpkgs { system = "x86_64-linux"; };
 
         bins = [ "solana"
@@ -55,12 +67,26 @@
             sha256 = "sha256-eMJethw5ZLrJHmoN2/l0bIyQjoTX1NsvalWSscTixpI=";
           };
 
-        build = version: src: toolchain:
+        # Doesn't compile yet
+        # toolchain_1_74_0 = #fenix.packages.x86_64-linux.latest;
+        #   fenix.packages.x86_64-linux.toolchainOf {
+        #     channel = "1.74.0";
+        #     sha256 = "sha256-U2yfueFohJHjif7anmJB5vZbpP7G6bICH4ZsjtufRoU=";
+        #   };
+
+        toolchain_1_72_1 = #fenix.packages.x86_64-linux.latest;
+          fenix.packages.x86_64-linux.toolchainOf {
+            channel = "1.72.1";
+            sha256 = "sha256-dxE7lmCFWlq0nl/wKcmYvpP9zqQbBitAQgZ1zx9Ooik=";
+          };
+
+        build = version: cpu-arch: src: toolchain:
           let
             rustPlatform = pkgs.makeRustPlatform {
               inherit (toolchain) cargo rustc rustfmt rust-src;
             };
           in pkgs.callPackage ./default.nix {
+            inherit cpu-arch;
             inherit version;
             inherit src;
             inherit rustPlatform;
@@ -97,17 +123,23 @@
         };
     in
       {
-        packages.x86_64-linux.solana-1_16_19 =
-          build "1.16.19" inputs.solana-src-1_16_19 toolchain_1_69_0;
-        packages.x86_64-linux.solana = self.packages.x86_64-linux.solana-1_16_19;
+        packages.x86_64-linux = arch-support.lib.eachCpuFlattened {
 
-        packages.x86_64-linux.jito-solana-1_16_18 =
-          build "1.16.18-jito" inputs.jito-solana-src-1_16_18 toolchain_1_69_0;
+          solana-1_16_19 = arch:
+            build "1.16.19" arch inputs.solana-src-1_16_19 toolchain_1_69_0;
+          solana-1_16_21 = arch:
+            build "1.16.21" arch inputs.solana-src-1_16_21 toolchain_1_69_0;
+          solana = arch: self.packages.x86_64-linux."solana-1_16_21/${arch}";
 
-        packages.x86_64-linux.jito-solana-1_16_19 =
-          build "1.16.19-jito" inputs.jito-solana-src-1_16_19 toolchain_1_69_0;
+          jito-solana-1_16_18 = arch:
+            build "1.16.18-jito" arch inputs.jito-solana-src-1_16_18 toolchain_1_69_0;
+          jito-solana-1_16_19 = arch:
+            build "1.16.19-jito" arch inputs.jito-solana-src-1_16_19 toolchain_1_69_0;
+          jito-solana-1_16_21 = arch:
+            build "1.16.21-jito" arch inputs.jito-solana-src-1_16_21 toolchain_1_72_1;
 
-        packages.x86_64-linux.jito-solana = self.packages.x86_64-linux.jito-solana-1_16_19;
+          jito-solana = arch: self.packages.x86_64-linux."jito-solana-1_16_21/${arch}";
+        };
 
         #packages.x86_64-linux.default = self.packages.x86_64-linux.jito-solana;
 

@@ -12,19 +12,21 @@
   perl,
   clang,
   perf-libs,
+  cpu-arch,
   extraTools ? [] }:
 
-rustPlatform.buildRustPackage rec {
+rustPlatform.buildRustPackage {
   pname = "solana";
+  version = "${version}-${cpu-arch}";
 
-  inherit src version;
+  inherit src;
 
   doCheck = false;
 
   #buildType = "debug";
   #dontStrip = true;
 
-  RUSTFLAGS="-C target-cpu=znver3";
+  RUSTFLAGS="-C target-cpu=${cpu-arch}";
 
   nativeBuildInputs = [
     pkg-config

@@ -1,5 +1,38 @@
 {
   "nodes": {
+    "arch-support": {
+      "inputs": {
+        "cpu-architectures": "cpu-architectures"
+      },
+      "locked": {
+        "lastModified": 1701517654,
+        "narHash": "sha256-HfL3+HrBfY8A7nAXf+oKofaR1Ib7Sh9gNWmRN4uOXCE=",
+        "owner": "litxio",
+        "repo": "nix-cpu-arch-support",
+        "rev": "360133774c1b5cd3e82e14e6503692419b9f2060",
+        "type": "github"
+      },
+      "original": {
+        "owner": "litxio",
+        "repo": "nix-cpu-arch-support",
+        "type": "github"
+      }
+    },
+    "cpu-architectures": {
+      "locked": {
+        "lastModified": 1701517497,
+        "narHash": "sha256-nFx5wC7whUnCL1FbamkOA02XM7himk2BVASI7LYStFM=",
+        "owner": "litxio",
+        "repo": "cpu-architectures",
+        "rev": "abb7ca72e2d332e61c42896e25bb89a9be33103e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "litxio",
+        "repo": "cpu-architectures",
+        "type": "github"
+      }
+    },
     "fenix": {
       "inputs": {
         "nixpkgs": [
@@ -59,6 +92,25 @@
         "url": "https://github.com/jito-foundation/jito-solana.git"
       }
     },
+    "jito-solana-src-1_16_21": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1701741087,
+        "narHash": "sha256-D6XiVmV38NB0a/NE+F6XcBCMe7AZc+NL5NTq0gwgkPU=",
+        "ref": "refs/tags/v1.16.21-jito",
+        "rev": "8bd8bf05d73fb821f5f485f00e027d5dfa8799b1",
+        "revCount": 22978,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/jito-foundation/jito-solana.git"
+      },
+      "original": {
+        "ref": "refs/tags/v1.16.21-jito",
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/jito-foundation/jito-solana.git"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1700011365,
@@ -76,11 +128,14 @@
     },
     "root": {
       "inputs": {
+        "arch-support": "arch-support",
         "fenix": "fenix",
         "jito-solana-src-1_16_18": "jito-solana-src-1_16_18",
         "jito-solana-src-1_16_19": "jito-solana-src-1_16_19",
+        "jito-solana-src-1_16_21": "jito-solana-src-1_16_21",
         "nixpkgs": "nixpkgs",
-        "solana-src-1_16_19": "solana-src-1_16_19"
+        "solana-src-1_16_19": "solana-src-1_16_19",
+        "solana-src-1_16_21": "solana-src-1_16_21"
       }
     },
     "rust-analyzer-src": {
@@ -113,6 +168,23 @@
       },
       "original": {
         "ref": "refs/tags/v1.16.19",
+        "type": "git",
+        "url": "https://github.com/solana-labs/solana.git"
+      }
+    },
+    "solana-src-1_16_21": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1701529561,
+        "narHash": "sha256-HUvPdknlQ19Cm8R2UGkuus1vl1/vQciIihacwsNJNEc=",
+        "ref": "refs/tags/v1.16.21",
+        "rev": "7fa077199f8f68d71197175b4394e65234e0d818",
+        "revCount": 22977,
+        "type": "git",
+        "url": "https://github.com/solana-labs/solana.git"
+      },
+      "original": {
+        "ref": "refs/tags/v1.16.21",
         "type": "git",
         "url": "https://github.com/solana-labs/solana.git"
       }
