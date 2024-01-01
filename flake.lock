@@ -130,6 +130,25 @@
         "url": "https://github.com/jito-foundation/jito-solana.git"
       }
     },
+    "jito-solana-src-1_16_24": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1702872337,
+        "narHash": "sha256-b/gBc8bnr1XGeLDglQ9uixMUgpaid+Z9v4u1/s0XzF4=",
+        "ref": "refs/tags/v1.16.24-jito",
+        "rev": "f8a465ec0ec9e87f580f5d29fb1cc946a8cc2c7e",
+        "revCount": 22990,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/jito-foundation/jito-solana.git"
+      },
+      "original": {
+        "ref": "refs/tags/v1.16.24-jito",
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/jito-foundation/jito-solana.git"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1700011365,
@@ -153,10 +172,12 @@
         "jito-solana-src-1_16_19": "jito-solana-src-1_16_19",
         "jito-solana-src-1_16_21": "jito-solana-src-1_16_21",
         "jito-solana-src-1_16_23": "jito-solana-src-1_16_23",
+        "jito-solana-src-1_16_24": "jito-solana-src-1_16_24",
         "nixpkgs": "nixpkgs",
         "solana-src-1_16_19": "solana-src-1_16_19",
         "solana-src-1_16_21": "solana-src-1_16_21",
-        "solana-src-1_16_23": "solana-src-1_16_23"
+        "solana-src-1_16_23": "solana-src-1_16_23",
+        "solana-src-1_16_24": "solana-src-1_16_24"
       }
     },
     "rust-analyzer-src": {
@@ -223,6 +244,23 @@
       },
       "original": {
         "ref": "refs/tags/v1.16.23",
+        "type": "git",
+        "url": "https://github.com/solana-labs/solana.git"
+      }
+    },
+    "solana-src-1_16_24": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1702603484,
+        "narHash": "sha256-03HYPrnC3bF1V7XAqtKJIosM0MiZkg83BHQR5xZYUaI=",
+        "ref": "refs/tags/v1.16.24",
+        "rev": "56b6c682c9dfe5726ed444c0d169daf3790f32a4",
+        "revCount": 22989,
+        "type": "git",
+        "url": "https://github.com/solana-labs/solana.git"
+      },
+      "original": {
+        "ref": "refs/tags/v1.16.24",
         "type": "git",
         "url": "https://github.com/solana-labs/solana.git"
       }
