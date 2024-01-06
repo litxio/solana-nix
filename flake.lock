@@ -177,7 +177,8 @@
         "solana-src-1_16_19": "solana-src-1_16_19",
         "solana-src-1_16_21": "solana-src-1_16_21",
         "solana-src-1_16_23": "solana-src-1_16_23",
-        "solana-src-1_16_24": "solana-src-1_16_24"
+        "solana-src-1_16_24": "solana-src-1_16_24",
+        "solana-src-1_16_25": "solana-src-1_16_25"
       }
     },
     "rust-analyzer-src": {
@@ -261,6 +262,23 @@
       },
       "original": {
         "ref": "refs/tags/v1.16.24",
+        "type": "git",
+        "url": "https://github.com/solana-labs/solana.git"
+      }
+    },
+    "solana-src-1_16_25": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1703198810,
+        "narHash": "sha256-g6GcDjCvTu496RPYL2IV/LCQ26tRzLU5sef3UBI8eIo=",
+        "ref": "refs/tags/v1.16.25",
+        "rev": "8dd7d060a83a4310c14d9b931d4409fc1ad27117",
+        "revCount": 22995,
+        "type": "git",
+        "url": "https://github.com/solana-labs/solana.git"
+      },
+      "original": {
+        "ref": "refs/tags/v1.16.25",
         "type": "git",
         "url": "https://github.com/solana-labs/solana.git"
       }
