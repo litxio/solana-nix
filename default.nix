@@ -3,7 +3,6 @@
   lib,
   rustPlatform,
   rustfmt,
-  fetchurl,
   pkg-config,
   protobuf,
   udev,
@@ -13,6 +12,7 @@
   clang,
   perf-libs,
   cpu-arch,
+  cargoOutputHashes ? {},
   extraTools ? [] }:
 
 rustPlatform.buildRustPackage {
@@ -55,10 +55,7 @@ rustPlatform.buildRustPackage {
   #sourceRoot = ".";
   cargoLock = {
     lockFile = "${src}/Cargo.lock";
-    outputHashes = {
-      "crossbeam-epoch-0.9.5" = "sha256-Jf0RarsgJiXiZ+ddy0vp4jQ59J9m0k3sgXhWhCdhgws=";
-      "ntapi-0.3.7" = "sha256-G6ZCsa3GWiI/FeGKiK9TWkmTxen7nwpXvm5FtjNtjWU=";
-    };
+    outputHashes = cargoOutputHashes;
   };
 
   #autoPatchelfIgnoreMissingDeps=true;

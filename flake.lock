@@ -187,6 +187,25 @@
         "url": "https://github.com/jito-foundation/jito-solana.git"
       }
     },
+    "jito-solana-src-1_17_16": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1705332845,
+        "narHash": "sha256-uz9/d7wyNCso6st96JLKwh8capbXmkOdoO5TUXXTvpE=",
+        "ref": "refs/tags/v1.17.16-jito",
+        "rev": "b23b2afbd0e6b70898dc2bcb234646105e2d9dd8",
+        "revCount": 23887,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/jito-foundation/jito-solana.git"
+      },
+      "original": {
+        "ref": "refs/tags/v1.17.16-jito",
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/jito-foundation/jito-solana.git"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1700011365,
@@ -213,13 +232,16 @@
         "jito-solana-src-1_16_24": "jito-solana-src-1_16_24",
         "jito-solana-src-1_16_25": "jito-solana-src-1_16_25",
         "jito-solana-src-1_16_26": "jito-solana-src-1_16_26",
+        "jito-solana-src-1_17_16": "jito-solana-src-1_17_16",
         "nixpkgs": "nixpkgs",
         "solana-src-1_16_19": "solana-src-1_16_19",
         "solana-src-1_16_21": "solana-src-1_16_21",
         "solana-src-1_16_23": "solana-src-1_16_23",
         "solana-src-1_16_24": "solana-src-1_16_24",
         "solana-src-1_16_25": "solana-src-1_16_25",
-        "solana-src-1_16_26": "solana-src-1_16_26"
+        "solana-src-1_16_26": "solana-src-1_16_26",
+        "solana-src-1_16_27": "solana-src-1_16_27",
+        "solana-src-1_17_16": "solana-src-1_17_16"
       }
     },
     "rust-analyzer-src": {
@@ -337,6 +359,40 @@
       },
       "original": {
         "ref": "refs/tags/v1.16.26",
+        "type": "git",
+        "url": "https://github.com/solana-labs/solana.git"
+      }
+    },
+    "solana-src-1_16_27": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1704909624,
+        "narHash": "sha256-xd0FCSlpPJDVWOlt9rIlnSbjksmvlXJWHkvlZONd2dM=",
+        "ref": "refs/tags/v1.16.27",
+        "rev": "eb1dc08da306a6bda3ada121a9e95f2d5297c863",
+        "revCount": 23000,
+        "type": "git",
+        "url": "https://github.com/solana-labs/solana.git"
+      },
+      "original": {
+        "ref": "refs/tags/v1.16.27",
+        "type": "git",
+        "url": "https://github.com/solana-labs/solana.git"
+      }
+    },
+    "solana-src-1_17_16": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1705069685,
+        "narHash": "sha256-v0hAsVUbJ/BMNTn4T4kBdnDdCAGCFYdUGFIORefbuUc=",
+        "ref": "refs/tags/v1.17.16",
+        "rev": "0aea75aaf57ef143e382d7c555daf5c1774835d3",
+        "revCount": 23886,
+        "type": "git",
+        "url": "https://github.com/solana-labs/solana.git"
+      },
+      "original": {
+        "ref": "refs/tags/v1.17.16",
         "type": "git",
         "url": "https://github.com/solana-labs/solana.git"
       }
