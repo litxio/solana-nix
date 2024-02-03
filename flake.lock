@@ -229,7 +229,6 @@
       "flake": false,
       "locked": {
         "lastModified": 1706561383,
-        "narHash": "sha256-745YeBClg7Rj35I9utLOdHuPnlHrN6AnpdgTOPPPX8A=",
         "ref": "refs/tags/v1.17.18-jito",
         "rev": "0f1337b3bce31be54b3a576e1c2d65bff3613f55",
         "revCount": 23901,
