@@ -50,6 +50,16 @@
     flake = false;
   };
 
+  inputs.solana-src-1_17_17 = {
+    url = "git+https://github.com/solana-labs/solana.git?ref=refs/tags/v1.17.17";
+    flake = false;
+  };
+
+  inputs.solana-src-1_17_18 = {
+    url = "git+https://github.com/solana-labs/solana.git?ref=refs/tags/v1.17.18";
+    flake = false;
+  };
+
   # Jito Solana
 
   inputs.jito-solana-src-1_16_18 = {
@@ -93,6 +103,16 @@
     flake = false;
   };
 
+  inputs.jito-solana-src-1_17_17 = {
+    url = "git+https://github.com/jito-foundation/jito-solana.git?ref=refs/tags/v1.17.17-jito&submodules=1";
+    flake = false;
+  };
+
+  inputs.jito-solana-src-1_17_18 = {
+    url = "git+https://github.com/jito-foundation/jito-solana.git?ref=refs/tags/v1.17.18-jito&submodules=1";
+    flake = false;
+  };
+
   outputs = inputs@{ self, nixpkgs, fenix, arch-support, ... }:
     let pkgs = import nixpkgs { system = "x86_64-linux"; };
 
@@ -125,13 +145,6 @@
             channel = "1.69.0";
             sha256 = "sha256-eMJethw5ZLrJHmoN2/l0bIyQjoTX1NsvalWSscTixpI=";
           };
-
-        # Doesn't compile yet
-        # toolchain_1_74_0 = #fenix.packages.x86_64-linux.latest;
-        #   fenix.packages.x86_64-linux.toolchainOf {
-        #     channel = "1.74.0";
-        #     sha256 = "sha256-U2yfueFohJHjif7anmJB5vZbpP7G6bICH4ZsjtufRoU=";
-        #   };
 
         # NOTE: 1.69 doesn't know about znver4, so we use this as a stopgap even
         # though solana 1.16 is really on rust 1.69
@@ -219,7 +232,11 @@
             build "1.16.27" arch inputs.solana-src-1_16_27 toolchain_1_72_1 outputHashes116;
           solana-1_17_16 = arch:
             build "1.17.16" arch inputs.solana-src-1_17_16 toolchain_1_73_0 outputHashes117;
-          solana = arch: self.packages.x86_64-linux."solana-1_17_16/${arch}";
+          solana-1_17_17 = arch:
+            build "1.17.17" arch inputs.solana-src-1_17_17 toolchain_1_73_0 outputHashes117;
+          solana-1_17_18 = arch:
+            build "1.17.18" arch inputs.solana-src-1_17_18 toolchain_1_73_0 outputHashes117;
+          solana = arch: self.packages.x86_64-linux."solana-1_17_18/${arch}";
 
           jito-solana-1_16_18 = arch:
             build "1.16.18-jito" arch inputs.jito-solana-src-1_16_18 toolchain_1_69_0 outputHashes116;
@@ -237,12 +254,22 @@
             build "1.16.26-jito" arch inputs.jito-solana-src-1_16_26 toolchain_1_72_1 outputHashes116;
           jito-solana-1_17_16 = arch:
             build "1.17.16-jito" arch inputs.jito-solana-src-1_17_16 toolchain_1_73_0 outputHashes117;
-
-          jito-solana = arch: self.packages.x86_64-linux."jito-solana-1_17_16/${arch}";
+          jito-solana-1_17_17 = arch:
+            build "1.17.17-jito" arch inputs.jito-solana-src-1_17_17 toolchain_1_73_0 outputHashes117;
+          jito-solana-1_17_18 = arch:
+            build "1.17.18-jito" arch inputs.jito-solana-src-1_17_18 toolchain_1_73_0 outputHashes117;
+          jito-solana = arch: self.packages.x86_64-linux."jito-solana-1_17_18/${arch}";
         };
 
         #packages.x86_64-linux.default = self.packages.x86_64-linux.jito-solana;
 
         apps.x86_64-linux = apps;
+
+        hydraJobs.x86_64-linux = {
+          "solana/znver3" = self.packages.x86_64-linux."solana/znver3";
+          "solana/znver4" = self.packages.x86_64-linux."solana/znver4";
+          "jito-solana/znver3" = self.packages.x86_64-linux."jito-solana/znver3";
+          "jito-solana/znver4" = self.packages.x86_64-linux."jito-solana/znver4";
+        };
       };
 }
