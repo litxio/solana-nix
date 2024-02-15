@@ -65,6 +65,11 @@
     flake = false;
   };
 
+  inputs.solana-src-1_17_22 = {
+    url = "git+https://github.com/solana-labs/solana.git?ref=refs/tags/v1.17.22";
+    flake = false;
+  };
+
   # Jito Solana
 
   inputs.jito-solana-src-1_16_18 = {
@@ -120,6 +125,11 @@
 
   inputs.jito-solana-src-1_17_20 = {
     url = "git+https://github.com/jito-foundation/jito-solana.git?ref=refs/tags/v1.17.20-jito&submodules=1";
+    flake = false;
+  };
+
+  inputs.jito-solana-src-1_17_22 = {
+    url = "git+https://github.com/jito-foundation/jito-solana.git?ref=refs/tags/v1.17.22-jito&submodules=1";
     flake = false;
   };
 
@@ -248,7 +258,9 @@
             build "1.17.18" arch inputs.solana-src-1_17_18 toolchain_1_73_0 outputHashes117;
           solana-1_17_20 = arch:
             build "1.17.20" arch inputs.solana-src-1_17_20 toolchain_1_73_0 outputHashes117;
-          solana = arch: self.packages.x86_64-linux."solana-1_17_20/${arch}";
+          solana-1_17_22 = arch:
+            build "1.17.22" arch inputs.solana-src-1_17_22 toolchain_1_73_0 outputHashes117;
+          solana = arch: self.packages.x86_64-linux."solana-1_17_22/${arch}";
 
           jito-solana-1_16_18 = arch:
             build "1.16.18-jito" arch inputs.jito-solana-src-1_16_18 toolchain_1_69_0 outputHashes116;
@@ -272,7 +284,9 @@
             build "1.17.18-jito" arch inputs.jito-solana-src-1_17_18 toolchain_1_73_0 outputHashes117;
           jito-solana-1_17_20 = arch:
             build "1.17.20-jito" arch inputs.jito-solana-src-1_17_20 toolchain_1_73_0 outputHashes117;
-          jito-solana = arch: self.packages.x86_64-linux."jito-solana-1_17_20/${arch}";
+          jito-solana-1_17_22 = arch:
+            build "1.17.22-jito" arch inputs.jito-solana-src-1_17_22 toolchain_1_73_0 outputHashes117;
+          jito-solana = arch: self.packages.x86_64-linux."jito-solana-1_17_22/${arch}";
         };
 
         #packages.x86_64-linux.default = self.packages.x86_64-linux.jito-solana;
