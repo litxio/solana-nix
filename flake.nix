@@ -297,7 +297,7 @@
           jito-solana-1_17_20 = arch:
             build "1.17.20-jito" arch inputs.jito-solana-src-1_17_20 toolchain_1_73_0 outputHashes117;
           jito-solana-1_17_27 = arch:
-            build "1.17.22-jito" arch inputs.jito-solana-src-1_17_27 toolchain_1_73_0 outputHashes117;
+            build "1.17.27" arch inputs.jito-solana-src-1_17_27 toolchain_1_73_0 outputHashes117;
           jito-solana = arch: self.packages.x86_64-linux."jito-solana-1_17_27/${arch}";
         };
 
