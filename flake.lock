@@ -320,6 +320,25 @@
         "url": "https://github.com/jito-foundation/jito-solana.git"
       }
     },
+    "jito-solana-src-1_17_31": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1713188668,
+        "narHash": "sha256-yMm2PAhW9irPQhsgtUtEnDzucxPi0FULGxjVH086RAg=",
+        "ref": "refs/tags/v1.17.31-jito",
+        "rev": "5e32a504e91ba0a00dde6e9161c3e46d703d7b3b",
+        "revCount": 23954,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/jito-foundation/jito-solana.git"
+      },
+      "original": {
+        "ref": "refs/tags/v1.17.31-jito",
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/jito-foundation/jito-solana.git"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1711900159,
@@ -353,6 +372,7 @@
         "jito-solana-src-1_17_22": "jito-solana-src-1_17_22",
         "jito-solana-src-1_17_27": "jito-solana-src-1_17_27",
         "jito-solana-src-1_17_28": "jito-solana-src-1_17_28",
+        "jito-solana-src-1_17_31": "jito-solana-src-1_17_31",
         "nixpkgs": "nixpkgs",
         "solana-src-1_16_19": "solana-src-1_16_19",
         "solana-src-1_16_21": "solana-src-1_16_21",

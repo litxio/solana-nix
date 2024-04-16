@@ -158,6 +158,11 @@
     flake = false;
   };
 
+  inputs.jito-solana-src-1_17_31 = {
+    url = "git+https://github.com/jito-foundation/jito-solana.git?ref=refs/tags/v1.17.31-jito&submodules=1";
+    flake = false;
+  };
+
   outputs = inputs@{ self, nixpkgs, fenix, arch-support, ... }:
     let pkgs = import nixpkgs { system = "x86_64-linux"; };
 
@@ -319,7 +324,9 @@
             build "1.17.27" arch inputs.jito-solana-src-1_17_27 toolchain_1_73_0 outputHashes117;
           jito-solana-1_17_28 = arch:
             build "1.17.28" arch inputs.jito-solana-src-1_17_28 toolchain_1_73_0 outputHashes117;
-          jito-solana = arch: self.packages.x86_64-linux."jito-solana-1_17_28/${arch}";
+          jito-solana-1_17_31 = arch:
+            build "1.17.31" arch inputs.jito-solana-src-1_17_31 toolchain_1_73_0 outputHashes117;
+          jito-solana = arch: self.packages.x86_64-linux."jito-solana-1_17_31/${arch}";
         };
 
         #packages.x86_64-linux.default = self.packages.x86_64-linux.jito-solana;
