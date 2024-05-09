@@ -340,7 +340,7 @@
             build "1.17.31" arch inputs.jito-solana-src-1_17_31 toolchain_1_73_0 outputHashes117;
           jito-solana-1_17_33 = arch:
             build "1.17.33" arch inputs.jito-solana-src-1_17_33 toolchain_1_73_0 outputHashes117;
-          jito-solana = arch: self.packages.x86_64-linux."jito-solana-1_17_31/${arch}";
+          jito-solana = arch: self.packages.x86_64-linux."jito-solana-1_17_33/${arch}";
         };
 
         #packages.x86_64-linux.default = self.packages.x86_64-linux.jito-solana;
