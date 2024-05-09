@@ -301,13 +301,13 @@
           solana-1_17_22 = arch:
             build "1.17.22" arch inputs.solana-src-1_17_22 toolchain_1_73_0 outputHashes117;
           solana-1_17_27 = arch:
-            build "1.17.27" arch inputs.solana-src-1_17_22 toolchain_1_73_0 outputHashes117;
+            build "1.17.27" arch inputs.solana-src-1_17_27 toolchain_1_73_0 outputHashes117;
           solana-1_17_28 = arch:
-            build "1.17.28" arch inputs.solana-src-1_17_22 toolchain_1_73_0 outputHashes117;
+            build "1.17.28" arch inputs.solana-src-1_17_28 toolchain_1_73_0 outputHashes117;
           solana-1_17_31 = arch:
-            build "1.17.31" arch inputs.solana-src-1_17_22 toolchain_1_73_0 outputHashes117;
+            build "1.17.31" arch inputs.solana-src-1_17_31 toolchain_1_73_0 outputHashes117;
           solana-1_17_33 = arch:
-            build "1.17.33" arch inputs.solana-src-1_17_22 toolchain_1_73_0 outputHashes117;
+            build "1.17.33" arch inputs.solana-src-1_17_33 toolchain_1_73_0 outputHashes117;
           solana = arch: self.packages.x86_64-linux."solana-1_17_33/${arch}";
 
           jito-solana-1_16_18 = arch:
