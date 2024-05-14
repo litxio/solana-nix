@@ -1,19 +1,29 @@
 diff --git a/accounts-db/src/accounts_db/geyser_plugin_utils.rs b/accounts-db/src/accounts_db/geyser_plugin_utils.rs
-index b4db0fc9fe..e3860d6653 100644
+index 34bd3d7b52..e74afa2c08 100644
 --- a/accounts-db/src/accounts_db/geyser_plugin_utils.rs
 +++ b/accounts-db/src/accounts_db/geyser_plugin_utils.rs
-@@ -46,6 +46,14 @@ impl AccountsDb {
-             return;
-         }
- 
+@@ -122,6 +122,13 @@ impl AccountsDb {
+         let notifier = self.accounts_update_notifier.as_ref().unwrap();
+         let mut measure_notify = Measure::start("accountsdb-plugin-notifying-accounts");
+         let local_write_version = 0;
 +
 +        // Check if the NO_NOTIFY_GEYSER_ACCOUNT_RESTORE environment variable is set
 +        let no_notify_geyser_account_restore = std::env::var("NO_NOTIFY_GEYSER_ACCOUNT_RESTORE").is_ok();
 +        if no_notify_geyser_account_restore {
 +            log::warn!("NO_NOTIFY_GEYSER_ACCOUNT_RESTORE is set; skipping geyser notify accounts");
-+            return;
 +        }
 +
-         let mut slots = self.storage.all_slots();
-         let mut notified_accounts: HashSet<Pubkey> = HashSet::default();
-         let mut notify_stats = GeyserPluginNotifyAtSnapshotRestoreStats::default();
+         for (_, mut account) in accounts_to_stream.drain() {
+             // We do not need to rely on the specific write_version read from the append vec.
+             // So, overwrite the write_version with something that works.
+@@ -134,7 +141,9 @@ impl AccountsDb {
+             };
+             account.set_meta(&meta);
+             let mut measure_pure_notify = Measure::start("accountsdb-plugin-notifying-accounts");
+-            notifier.notify_account_restore_from_snapshot(slot, &account);
++            if !no_notify_geyser_account_restore {
++                notifier.notify_account_restore_from_snapshot(slot, &account);
++            }
+             measure_pure_notify.stop();
+ 
+             notify_stats.total_pure_notify += measure_pure_notify.as_us() as usize;
