@@ -1,0 +1,19 @@
+diff --git a/accounts-db/src/accounts_db/geyser_plugin_utils.rs b/accounts-db/src/accounts_db/geyser_plugin_utils.rs
+index b4db0fc9fe..e3860d6653 100644
+--- a/accounts-db/src/accounts_db/geyser_plugin_utils.rs
++++ b/accounts-db/src/accounts_db/geyser_plugin_utils.rs
+@@ -46,6 +46,14 @@ impl AccountsDb {
+             return;
+         }
+ 
++
++        // Check if the NO_NOTIFY_GEYSER_ACCOUNT_RESTORE environment variable is set
++        let no_notify_geyser_account_restore = std::env::var("NO_NOTIFY_GEYSER_ACCOUNT_RESTORE").is_ok();
++        if no_notify_geyser_account_restore {
++            log::warn!("NO_NOTIFY_GEYSER_ACCOUNT_RESTORE is set; skipping geyser notify accounts");
++            return;
++        }
++
+         let mut slots = self.storage.all_slots();
+         let mut notified_accounts: HashSet<Pubkey> = HashSet::default();
+         let mut notify_stats = GeyserPluginNotifyAtSnapshotRestoreStats::default();

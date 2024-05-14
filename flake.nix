@@ -242,6 +242,7 @@
             inherit (toolchain) rustfmt;
             inherit perf-libs;
             inherit cargoOutputHashes;
+            patches = [ ./patches/no-notify-geyser-account-restore.patch ];
 
             extraTools = [fenix.packages.x86_64-linux.rust-analyzer
                           (toolchain.withComponents [

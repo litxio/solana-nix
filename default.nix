@@ -12,6 +12,7 @@
   clang,
   perf-libs,
   cpu-arch,
+  patches ? [],
   cargoOutputHashes ? {},
   extraTools ? [] }:
 
@@ -19,7 +20,7 @@ rustPlatform.buildRustPackage {
   pname = "solana";
   version = "${version}-${cpu-arch}";
 
-  inherit src;
+  inherit src patches;
 
   doCheck = false;
 
